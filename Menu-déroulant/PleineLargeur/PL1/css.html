@@ -96,6 +96,7 @@ const menuVertical = document.getElementById("menu-vertical");
 MenuItemsEnum.forEach((item) => {
     const menuItem = document.createElement("div");
     menuItem.classList.add("menu-item");
+    menuItem.id = item.divID;
 
     const img = document.createElement("img");
     img.src = item.imageSrc;
