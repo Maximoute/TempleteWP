@@ -1,0 +1,86 @@
+        /* Styles pour le conteneur de la page */
+        .page-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #333;
+      }
+
+      /* Styles pour le menu vertical élargi */
+      .menu-vertical {
+
+          border-radius: 10px;
+          width: 700px; /* Largeur élargie */
+      }
+
+      /* Styles pour chaque élément de menu */
+      .menu-item {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          color: #fff;
+           border: 2px solid #fff;
+           border-radius: 15px;
+           margin-bottom: 10px;
+      }
+
+      .menu-item img {
+          width: 75px;
+          height: 75px;
+          margin-right: 10px;
+      }
+
+      .menu-item-text {
+          flex: 1;
+          text-align: center;
+          margin-left: -60px;
+      }
+@font-face {
+  font-family: 'roswell_three_itc';
+  src: url('https://friteriemassimo.be/wp-content/uploads/2023/11/roswell_three_itc.ttf') format('truetype');
+  /* Ajoutez d'autres formats de police si nécessaire */
+}
+      .menu-item h3 {
+          font-family: 'roswell_three_itc', sans-serif;
+          margin: 0;
+          font-size: 60px;
+          letter-spacing: 2px;/* Taille de texte plus grande */
+      }
+
+/* Styles pour le sous-menu */
+.menu-item {
+  position: relative;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%; /* Pour s'assurer que le sous-menu a la même largeur que l'élément parent */
+  border-radius: 0; /* Supprimez la bordure arrondie */
+  background-color: #333;
+  z-index: 1; /* Pour s'assurer que le sous-menu s'affiche au-dessus des autres éléments si nécessaire */
+}
+
+.sub-menu a {
+  display: block;
+  padding: 10px; /* Ajustez la hauteur de chaque élément du sous-menu selon vos besoins */
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'roswell_three_itc', sans-serif;
+  margin: 0;
+  font-size: 60px;
+  letter-spacing: 2px;/* Taille de texte plus grande */
+}
+
+.menu-item:hover .sub-menu {
+  display: block; /* Utilisez "block" pour empiler les liens de haut en bas */
+}
+
+
+
+
+
