@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="C:\wamp64\www\wordpress\wp-content\themes\Massimo\style.css">
+</head>
+<body>
+    
+<div class="page-container" >
+    <div class="menu-vertical" id="menu-vertical">
+        <div class="menu-item">
+            <img src="image1.jpg" alt="Image 1">
+            <div class="menu-item-text">
+                <h3>Mon Panier</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <div class="menu-item">
+            <img src="image1.jpg" alt="Image 1">
+            <div class="menu-item-text">
+                <h3>Suggestions</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <div class="menu-item">
+            <img src="https://friteriemassimo.be/wp-content/uploads/2023/11/Frites.webp" alt="Frites">
+            <div class="menu-item-text">
+                <h3>Frites</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <div class="menu-item">
+            <img src="https://friteriemassimo.be/wp-content/uploads/2023/11/Frikandel.webp" alt="Snacks">
+            <div class="menu-item-text">
+                <h3>Snacks</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <div class="menu-item">
+            <img src="image1.jpg" alt="Image 1">
+            <div class="menu-item-text">
+                <h3>Spécialités</h3>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="https://friteriemassimo.be/wp-content/uploads/2023/11/Hamburgers-removebg-preview.webp" alt="Hamburgers">
+            <div class="menu-item-text">
+                <h3>Hamburger</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <div class="menu-item">
+            <img src="image1.jpg" alt="Image 1">
+            <div class="menu-item-text">
+                <h3>Pitta</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <div class="menu-item">
+            <img src="https://friteriemassimo.be/wp-content/uploads/2023/11/pain-frites-removebg-preview.webp" alt="Mitrailettes">
+            <div class="menu-item-text">
+                <h3>Mitrailettes</h3>
+                <div class="sub-menu">
+                    <a href="lien-vers-sandwich.html">Sandwich</a>
+                    <a href="lien-vers-mitrailettes.html">Mitrailettes</a>
+                </div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="image1.jpg" alt="Image 1">
+            <div class="menu-item-text">
+                <h3>Enfants</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <div class="menu-item">
+            <img src="https://friteriemassimo.be/wp-content/uploads/2023/11/sauces-removebg-preview.webp" alt="Sauces">
+            <div class="menu-item-text">
+                <h3>sauces</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+        <div class="menu-item">
+            <img src="https://friteriemassimo.be/wp-content/uploads/2023/11/Coca-removebg-preview.webp" alt="Boissons">
+            <div class="menu-item-text">
+                <h3>Boissons</h3>
+            </div>
+        </div>
+        <!-- Ajoutez les autres éléments de menu ici -->
+    </div>
+</div>
+<script>
+// Sélectionnez l'élément de menu vertical par son ID
+const menuVertical = document.getElementById("menu-vertical");
+
+// Sélectionnez tous les éléments de menu à l'intérieur du menu vertical
+const menuItems = menuVertical.querySelectorAll(".menu-item");
+
+menuItems.forEach((menuItem) => {
+    // Sélectionnez le sous-menu à l'intérieur de l'élément de menu actuel
+    const subMenu = menuItem.querySelector(".sub-menu");
+
+    // Si un sous-menu est trouvé à l'intérieur de l'élément de menu
+    if (subMenu) {
+        // Lorsque vous cliquez sur l'élément de menu
+        menuItem.addEventListener("click", (event) => {
+            // Empêchez le clic de propager à d'autres éléments
+            event.stopPropagation();
+
+            // Affichez ou masquez le sous-menu en alternance
+            if (subMenu.style.display === "block") {
+                subMenu.style.display = "none";
+            } else {
+                subMenu.style.display = "block";
+
+                // Calculez la position verticale du sous-menu
+                const menuItemRect = menuItem.getBoundingClientRect();
+                subMenu.style.top = `${menuItemRect.bottom}px`;
+            }
+        });
+
+        // Empêchez la propagation des clics à partir du sous-menu
+        subMenu.addEventListener("click", (event) => {
+            event.stopPropagation();
+        });
+    }
+});
+
+// Lorsque vous cliquez ailleurs sur la page, masquez tous les sous-menus
+document.addEventListener("click", () => {
+    menuItems.forEach((menuItem) => {
+        const subMenu = menuItem.querySelector(".sub-menu");
+        if (subMenu) {
+            subMenu.style.display = "none";
+        }
+    });
+});
+
+</script>
+
+
+
+    
+    
+    
+    
+    
