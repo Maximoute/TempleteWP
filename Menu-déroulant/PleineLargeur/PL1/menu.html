@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page-container">
+    <div class="menu-vertical" id="menu-vertical">
+    </div>
+</div>
+
+<script>
+// Define an enum for image and div ID information
+const MenuItemsEnum = [
+    // Add more items to the enum
+    {
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/Panier.webp",
+        altText: "Mon Panier",
+        divID: "Mon Panier",
+        divText: "Mon Panier"
+    },
+    {
+        imageSrc: "",
+        altText: "",
+        divID: "Suggestions",
+        divText: "Suggestions"
+    },
+    {
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/Frites.webp",
+        altText: "Frites",
+        divID: "frites",
+        divText: "Frites"
+    },
+    {
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/Frikandel.webp",
+        altText: "Snacks",
+        divID: "snacks",
+        divText: "Snacks"
+    },
+    {
+        imageSrc: "",
+        altText: "",
+        divID: "specialites",
+        divText: "Spécialités",
+        subMenu: [
+            {
+                linkText: "Sandwich",
+                linkHref: "lien-vers-sandwich.html"
+            },
+            {
+                linkText: "Mitrailettes",
+                linkHref: "lien-vers-mitrailettes.html"
+            }
+        ]
+    },
+    {
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/Hamburgers-removebg-preview.webp",
+        altText: "Hamburgers",
+        divID: "Hamburgers",
+        divText: "Hamburgers"
+    },
+    {
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/pain-frites-removebg-preview.webp",
+        altText: "Mitrailettes",
+        divID: "mitrailettes",
+        divText: "Mitrailettes"
+    },
+    {
+        imageSrc: "",
+        altText: "",
+        divID: "Enfants",
+        divText: "Enfants"
+    },
+    {
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/sauces-removebg-preview.webp",
+        altText: "sauces",
+        divID: "sauces",
+        divText: "sauces"
+    },
+    {
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/Coca-removebg-preview.webp",
+        altText: "Boissons",
+        divID: "Boissons",
+        divText: "Boissons"
+    },
+
+];
+
+const menuVertical = document.getElementById("menu-vertical");
+
+// Loop through the enum and create the menu items
+MenuItemsEnum.forEach((item) => {
+    const menuItem = document.createElement("div");
+    menuItem.classList.add("menu-item");
+    menuItem.id = item.divID;
+
+    const img = document.createElement("img");
+    img.src = item.imageSrc;
+    img.alt = item.altText;
+
+    const menuText = document.createElement("div");
+    menuText.classList.add("menu-item-text");
+
+    const h3 = document.createElement("h3");
+    h3.textContent = item.divText;
+
+    menuText.appendChild(h3);
+    menuItem.appendChild(img);
+    menuItem.appendChild(menuText);
+
+    // Append the menu item to the menu
+    menuVertical.appendChild(menuItem);
+
+    // Check if the item has a submenu
+    if (item.subMenu) {
+        const subMenu = document.createElement("div");
+        subMenu.classList.add("sub-menu");
+        item.subMenu.forEach((subMenuItem) => {
+            const subMenuLink = document.createElement("a");
+            subMenuLink.href = subMenuItem.linkHref;
+            subMenuLink.textContent = subMenuItem.linkText;
+            subMenu.appendChild(subMenuLink);
+        });
+        menuItem.appendChild(subMenu);
+    }
+});
+
+</script>
+</body>
+</html>
