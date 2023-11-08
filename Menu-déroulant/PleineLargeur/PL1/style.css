@@ -75,12 +75,3 @@
   font-size: 60px;
   letter-spacing: 2px;/* Taille de texte plus grande */
 }
-
-.menu-item:hover .sub-menu {
-  display: block; /* Utilisez "block" pour empiler les liens de haut en bas */
-}
-
-
-
-
-

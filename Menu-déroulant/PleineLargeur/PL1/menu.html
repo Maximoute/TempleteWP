@@ -24,8 +24,8 @@ const MenuItemsEnum = [
         divText: "Mon Panier"
     },
     {
-        imageSrc: "",
-        altText: "",
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/Suggestions-scaled.webp",
+        altText: "Suggestions",
         divID: "Suggestions",
         divText: "Suggestions"
     },
@@ -42,8 +42,8 @@ const MenuItemsEnum = [
         divText: "Snacks"
     },
     {
-        imageSrc: "",
-        altText: "",
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/Specialite-e1699464098438.webp",
+        altText: "specialites",
         divID: "specialites",
         divText: "Spécialités",
         subMenu: [
@@ -70,8 +70,8 @@ const MenuItemsEnum = [
         divText: "Mitrailettes"
     },
     {
-        imageSrc: "",
-        altText: "",
+        imageSrc: "https://friteriemassimo.be/wp-content/uploads/2023/11/Box-enfant-scaled.webp",
+        altText: "Enfants",
         divID: "Enfants",
         divText: "Enfants"
     },
@@ -93,10 +93,15 @@ const MenuItemsEnum = [
 const menuVertical = document.getElementById("menu-vertical");
 
 // Loop through the enum and create the menu items
+
+let item_id = 0; // Initialize the item_id variable
+
 MenuItemsEnum.forEach((item) => {
+    item_id++;
     const menuItem = document.createElement("div");
     menuItem.classList.add("menu-item");
-    menuItem.id = item.divID;
+    menuItem.id = item_id;
+    menuItem.open = false
 
     const img = document.createElement("img");
     img.src = item.imageSrc;
@@ -111,6 +116,7 @@ MenuItemsEnum.forEach((item) => {
     menuText.appendChild(h3);
     menuItem.appendChild(img);
     menuItem.appendChild(menuText);
+    menuItem.onclick = function() { test(menuVertical, menuItem.id, item_id); };
 
     // Append the menu item to the menu
     menuVertical.appendChild(menuItem);
@@ -128,6 +134,45 @@ MenuItemsEnum.forEach((item) => {
         menuItem.appendChild(subMenu);
     }
 });
+
+function test(menuVertical, id, max_id) {
+    id = parseInt(id);
+    
+    // Toggle the state (open/close) of the clicked menu item
+    const clickedMenuItem = document.getElementById(id);
+    
+    if (clickedMenuItem) {
+        if (clickedMenuItem.open === true) {
+            clickedMenuItem.open = false;
+            clickedMenuItem.style.transform = 'translateY(0px)';
+            isMoved = false; // Reset the isMoved flag
+        } else {
+            // Close all open menu items
+            for (let i = 1; i <= max_id; i++) {
+                const menuItem = document.getElementById(i);
+                if (menuItem && menuItem.open === true) {
+                    menuItem.open = false;
+                    menuItem.style.transform = 'translateY(0px)';
+                }
+            }
+            
+            // Open the clicked menu item
+            clickedMenuItem.open = true;
+            clickedMenuItem.style.transform = 'translateY(100px)';
+            isMoved = true; // Set the isMoved flag to true
+        }
+    }
+
+    // If the clicked item is open and has been moved, move all items below it down
+    if (isMoved) {
+        for (let i = id + 1; i <= max_id; i++) {
+            const menuItem = document.getElementById(i);
+            if (menuItem) {
+                menuItem.style.transform = 'translateY(100px)';
+            }
+        }
+    }
+}
 
 </script>
 </body>
